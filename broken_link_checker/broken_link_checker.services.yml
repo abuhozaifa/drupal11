@@ -1,0 +1,4 @@
+services:
+  broken_link_checker.link_checker:
+    class: Drupal\broken_link_checker\Service\LinkCheckerService
+    arguments: ['@http_client']

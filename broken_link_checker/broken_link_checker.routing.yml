@@ -1,0 +1,15 @@
+broken_link_checker.scan:
+  path: '/admin/reports/broken-links/scan'
+  defaults:
+    _form: '\Drupal\broken_link_checker\Form\ScanForm'
+    _title: 'Broken Link Scan'
+  requirements:
+    _permission: 'administer site configuration'
+
+broken_link_checker.report:
+  path: '/admin/reports/broken-links'
+  defaults:
+    _controller: '\Drupal\broken_link_checker\Controller\ReportController::report'
+    _title: 'Broken Links'
+  requirements:
+    _permission: 'administer site configuration'

@@ -1,0 +1,5 @@
+name: Broken Link Checker
+type: module
+description: Checks links in node body content.
+core_version_requirement: ^11
+package: Custom
