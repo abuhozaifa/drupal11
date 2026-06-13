@@ -1,14 +1,31 @@
 <?php
+
 function broken_link_checker_schema() {
-  return [
-    'broken_links' => [
-      'fields' => [
-        'id' => ['type' => 'serial'],
-        'nid' => ['type' => 'int'],
-        'url' => ['type' => 'varchar', 'length' => 1000],
-        'status_code' => ['type' => 'int'],
+  $schema['broken_links'] = [
+    'description' => 'Stores broken links.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
       ],
-      'primary key' => ['id'],
+      'nid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'url' => [
+        'type' => 'varchar',
+        'length' => 1000,
+        'not null' => TRUE,
+      ],
+      'status_code' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
     ],
+    'primary key' => ['id'],
   ];
+
+  return $schema;
 }
