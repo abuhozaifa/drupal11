@@ -1,0 +1,7 @@
+administer code inspector:
+  title: 'Administer Code Inspector'
+  description: 'Manage Code Inspector settings.'
+
+access code inspector reports:
+  title: 'Access Code Inspector Reports'
+  description: 'View scan reports and run scans.'

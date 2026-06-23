@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function code_inspector_schema() {
+
+  $schema['code_inspector_reports'] = [
+    'description' => 'Stores Code Inspector scan reports.',
+    'fields' => [
+
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+
+      'scan_date' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+
+      'files_scanned' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+
+      'issues_found' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+
+      'report_data' => [
+        'type' => 'blob',
+        'size' => 'big',
+        'not null' => FALSE,
+      ],
+
+    ],
+
+    'primary key' => ['id'],
+  ];
+
+
+$schema['code_inspector_issues'] = [
+  'description' => 'Stores individual scanned code issues mapped to a report.',
+  'fields' => [
+    'id' => [
+      'description' => 'Primary Key: Unique issue ID.',
+      'type' => 'serial',
+      'not null' => TRUE,
+    ],
+    'report_id' => [
+      'description' => 'The foreign key linking to code_inspector_reports.id.',
+      'type' => 'int',
+      'not null' => TRUE,
+      'default' => 0,
+    ],
+    'file_path' => [
+      'description' => 'Path of the scanned file containing the issue.',
+      'type' => 'varchar',
+      'length' => 1000,
+      'not null' => FALSE,
+    ],
+    'severity' => [
+      'description' => 'Severity level string (e.g., High, Medium, Low).',
+      'type' => 'varchar',
+      'length' => 50,
+      'not null' => FALSE,
+    ],
+    'issue_type' => [
+      'description' => 'The category of the issue (e.g., Security, Deprecated API).',
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => FALSE,
+    ],
+    'pattern' => [
+      'description' => 'The string pattern matched by the scanner.',
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => FALSE,
+    ],
+    'line_number' => [
+      'description' => 'The line number where the issue was caught.',
+      'type' => 'int',
+      'not null' => FALSE,
+    ],
+    'severity_score' => [
+      'description' => 'Numeric priority score indicating threat weight.',
+      'type' => 'int',
+      'not null' => FALSE,
+    ],
+    'code_snippet' => [
+      'description' => 'The exact line chunk snippet extracted.',
+      'type' => 'text',
+      'size' => 'big', // 🪓 FIXED: This forces the type to match LONGTEXT
+      'not null' => FALSE,
+    ],
+    'recommendation' => [
+      'description' => 'Suggested fix instructions.',
+      'type' => 'text',
+      'not null' => FALSE,
+    ],
+  ],
+  'primary key' => ['id'],
+  // Addition: Creating an index on report_id speeds up dashboard loading dramatically
+  'indexes' => [
+    'report_id' => ['report_id'],
+  ],
+];
+  return $schema;
+}

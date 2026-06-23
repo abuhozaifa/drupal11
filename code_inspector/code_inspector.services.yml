@@ -1,0 +1,17 @@
+services:
+
+  code_inspector.deprecated_scanner:
+    class: Drupal\code_inspector\Service\DeprecatedScanner
+
+  code_inspector.security_scanner:
+    class: Drupal\code_inspector\Service\SecurityScanner
+
+  code_inspector.compatibility_scanner:
+    class: Drupal\code_inspector\Service\CompatibilityScanner
+
+  code_inspector.scanner:
+    class: Drupal\code_inspector\Service\ScannerService
+    arguments:
+      - '@code_inspector.deprecated_scanner'
+      - '@code_inspector.security_scanner'
+      - '@code_inspector.compatibility_scanner'

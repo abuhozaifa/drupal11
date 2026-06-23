@@ -1,0 +1,46 @@
+code_inspector.settings:
+  path: '/admin/config/development/code-inspector'
+  defaults:
+    _form: '\Drupal\code_inspector\Form\SettingsForm'
+    _title: 'Code Inspector Settings'
+  requirements:
+    _permission: 'administer code inspector'
+
+code_inspector.scan:
+  path: '/admin/reports/code-inspector'
+  defaults:
+    _form: '\Drupal\code_inspector\Form\ScanForm'
+    _title: 'Code Inspector Scan'
+  requirements:
+    _permission: 'access code inspector reports'
+
+code_inspector.reports:
+  path: '/admin/reports/code-inspector/reports'
+  defaults:
+    _controller: '\Drupal\code_inspector\Controller\ReportController::history'
+    _title: 'Code Inspector Reports'
+  requirements:
+    _permission: 'access code inspector reports'
+
+code_inspector.history:
+  path: '/admin/reports/code-inspector/history'
+  defaults:
+    _controller: '\Drupal\code_inspector\Controller\ReportController::history'
+    _title: 'Code Inspector History'
+  requirements:
+    _permission: 'access code inspector reports'
+
+code_inspector.view_report:
+  path: '/admin/reports/code-inspector/report/{id}'
+  defaults:
+    _controller: '\Drupal\code_inspector\Controller\ReportController::view'
+    _title: 'Scan Report'
+  requirements:
+    _permission: 'access code inspector reports'
+
+code_inspector.export_csv:
+  path: '/admin/reports/code-inspector/export/{id}'
+  defaults:
+    _controller: '\Drupal\code_inspector\Controller\ExportController::csv'
+  requirements:
+    _permission: 'access code inspector reports'

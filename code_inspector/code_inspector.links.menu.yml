@@ -1,0 +1,36 @@
+# 1. Create the Main Dedicated Section Heading
+code_inspector.admin_root:
+  title: 'Code Inspector'
+  description: 'Manage and run code security and compatibility inspections.'
+  route_name: code_inspector.history # Falls back to history if the root is clicked
+  parent: system.admin_config
+  weight: -10
+
+# 2. List all links inside the new section
+code_inspector.scan:
+  title: 'Run Code Scan'
+  description: 'Run new code inspection scans'
+  route_name: code_inspector.scan
+  parent: code_inspector.admin_root
+  weight: 10
+
+code_inspector.history:
+  title: 'Scan History'
+  description: 'View custom scan history log'
+  route_name: code_inspector.history
+  parent: code_inspector.admin_root
+  weight: 20
+
+code_inspector.reports:
+  title: 'Detailed Reports'
+  description: 'View generated scan reports'
+  route_name: code_inspector.reports
+  parent: code_inspector.admin_root
+  weight: 30
+
+code_inspector.settings:
+  title: 'Inspector Settings'
+  description: 'Configure scan paths and settings'
+  route_name: code_inspector.settings
+  parent: code_inspector.admin_root
+  weight: 40

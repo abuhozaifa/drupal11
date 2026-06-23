@@ -1,0 +1,16 @@
+scan_path: modules/custom
+
+ignore_vendor: true
+
+ignore_core: true
+
+ignore_paths: |
+  vendor
+  core
+  node_modules
+
+enable_csv_export: true
+
+severity_threshold: low
+
+max_file_size: 5

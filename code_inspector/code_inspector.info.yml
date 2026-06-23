@@ -1,0 +1,9 @@
+name: Code Inspector
+type: module
+description: Scans Drupal code for deprecated APIs, unsafe PHP usage, and Drupal 11 compatibility issues.
+package: Development
+core_version_requirement: ^11
+configure: code_inspector.settings
+
+dependencies:
+  - drupal:system
